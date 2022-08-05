@@ -1,13 +1,13 @@
 * {
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
 }
-/* body{
-    background-color: aqua; */
-    /* color:black; */
-/* } */
+body{
+    background-color: aqua;
+    color:black;
+}
 header {
     margin-bottom: 30px;
 }
@@ -26,6 +26,7 @@ header {
     padding: 10px;
     box-shadow: 5px 7px rgba(178, 201, 216, 0.582);
     margin-bottom: 25px;
+    width: 100vh;
 }
 .text{
     color: black;

@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"path"
 	"strconv"
+
+	// "golang.org/x/text/message"
 )
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
@@ -111,4 +113,38 @@ func Form(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
+	http.Error(w, "There is Something Wrong. Keep Calm", http.StatusBadRequest)
+}
+func Proses(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "POST"{
+		err := r.ParseForm()
+		if err != nil {
+			log.Println(err)
+			http.Error(w, "There is Something Wrong. Keep Calm", http.StatusInternalServerError)
+			return
+		}
+
+		name := r.Form.Get("name")
+		message := r.Form.Get("message")
+
+		data := map[string]interface{}{
+			"name" : name,
+			"message" : message,
+		}
+		// w.Write([]byte(name))
+		tmpl, err := template.ParseFiles(path.Join("views", "result.html"), path.Join("views", "layout.html"))
+		if err != nil{
+			log.Println(err)
+			http.Error(w, "There is Something Wrong. Keep Calm", http.StatusInternalServerError)
+			return
+		}
+		err = tmpl.Execute(w, data)
+		if err != nil{
+			log.Println(err)
+			http.Error(w, "There is Something Wrong. Keep Calm", http.StatusInternalServerError)
+			return
+		}
+		
+	}
+	http.Error(w, "There is Something Wrong. Keep Calm", http.StatusBadRequest)
 }
