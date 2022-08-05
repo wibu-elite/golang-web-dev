@@ -10,7 +10,6 @@ import (
 	"strconv"
 )
 
-
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	log.Println(r.URL.Path)
 	if r.URL.Path != "/" {
@@ -44,8 +43,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	
-} 
+}
 
 func HelloHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Hello World, Saya Sedang Belajar Golang Web"))
@@ -80,6 +78,37 @@ func ProductHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println(err)
 		http.Error(w, "There is Some Problems. Keep Calm", http.StatusInternalServerError)
+		return
+	}
+
+}
+func PostGet(w http.ResponseWriter, r *http.Request) {
+	method := r.Method
+
+	switch method {
+	case "GET":
+		w.Write([]byte("Ini adalah GET"))
+	case "POST":
+		w.Write([]byte("Ini adalah POST"))
+	default:
+		http.Error(w, "Something Wrong With You", http.StatusBadRequest)
+	}
+}
+
+func Form(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "GET" {
+		tmpl, err := template.ParseFiles(path.Join("views", "form.html"), path.Join("views", "layout.html"))
+		if err != nil {
+			log.Println(err)
+			http.Error(w, "There is Something Worng. Keep Calm", http.StatusInternalServerError)
+			return
+		}
+		err = tmpl.Execute(w, nil)
+		if err != nil {
+			log.Println(err)
+			http.Error(w, "There is Something Wrong. Keep Calm", http.StatusInternalServerError)
+			return
+		}
 		return
 	}
 }

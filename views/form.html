@@ -1,0 +1,21 @@
+{{ template "layout" . }}
+
+{{ define "main" }}
+<div class="box-with-shadwo">
+    <form action="/proses" method="post">
+        <div class="box-with-shadow">
+            <label for="name">Namae wa</label>
+            <input type="text" name="name" placeholder="Your Name" required>
+        </div>
+
+        <div class="box-with-shadow">
+            <label for="name">Massege</label>
+            <input type="text" name="Massege" placeholder="Your Massege" required>
+        </div>
+
+        <div class="box-with-shadow">
+            <input type="submit" value="Kirim">
+        </div>
+    </form>
+</div>
+{{ end }}
