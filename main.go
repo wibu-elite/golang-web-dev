@@ -12,13 +12,19 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/", handler.HomeHandler)
+	mux.HandleFunc("/", handler.Login)
+	mux.HandleFunc("/logout", handler.Logout)
+	mux.HandleFunc("/insert", handler.Insert)
+
+
 	mux.HandleFunc("/hello", handler.HelloHandler)
+	mux.HandleFunc("/auth", handler.Auth)
 	mux.HandleFunc("/key", handler.KeyHandler)
 	mux.HandleFunc("/product", handler.ProductHandler)
 	mux.HandleFunc("/post-get", handler.PostGet)
 	mux.HandleFunc("/form", handler.Form)
-	mux.HandleFunc("/proses", handler.Proses)
+	mux.HandleFunc("/task", handler.Task)
+	mux.HandleFunc("/home", handler.HomeHandler)
 
 	fileServer := http.FileServer(http.Dir("assets"))
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))

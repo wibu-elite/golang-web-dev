@@ -1,0 +1,28 @@
+{{ template "layout" . }}
+{{ define "main" }}
+
+<h2> Registered </h2>
+    <table border="1" class="table table-bordered">
+      <thead>
+      <tr>
+        <th>ID</th>
+        {{ .task.id }}
+        <th>Nama</th>
+        <th>Nama Task</th>
+        <th>Deadline</th>
+      </tr>
+       </thead>
+       <tbody>
+
+       <!-- {{ .content }} -->
+      <tr>
+        <td>{{ .content }}</td>
+        <td> {{ .nama }} </td>
+        <td>{{ .nama_task }} </td> 
+        <td>{{ .deadline }} </td> 
+      </tr> -->
+       </tbody>
+    </table>
+
+
+{{ end }}

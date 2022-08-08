@@ -1,13 +1,41 @@
 {{ template "layout" .}}
 
 {{ define "main" }}
-
-{{ range .}}
-    <div class="text box-with-shadow">
-        {{ .Name }} - {{ .Price }} - {{ .StockStatus}}
-    </div>
-
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>GoNewbie</title>
+</head>
+<body>
+    <header>
+        <div class="nav-top">
+            <ul id="menu"> 
+                <li> 
+                    <a href="#">Home</a>
+                </li><li> 
+                    <a href="#">Profile</a>
+                </li>
+                <li> 
+                    <a href="/form">Taks</a>
+                </li>
+                <li> 
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+</body>
+</head>
+</html>
 {{ end }}
 
-{{ end }}
- 
+    <!-- <header> -->
+        <!-- <div class="logo-header"><img src="/public/resize-logo-web-dev1.png"></div>
+        <a href="#" class="logo-text">GoNewbie</a> -->
+        
+    
+    <!-- {{ template "main" .}} -->

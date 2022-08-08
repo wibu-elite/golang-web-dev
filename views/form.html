@@ -1,21 +1,24 @@
 {{ template "layout" . }}
 
 {{ define "main" }}
-<div class="box-with-shadwo">
-    <form action="/proses" method="post">
-        <div class="box-with-shadow">
-            <label for="name">Namae wa</label>
-            <input type="text" name="name" placeholder="Your Name" required>
-        </div>
+<div class="container" style="margin-top: 100px;">
 
-        <div class="box-with-shadow">
-            <label for="name">Massege</label>
-            <input type="text" name="message" placeholder="Your Message" required>
+    <form action="insert" method="post">
+        <div class="mb-3">
+          <label class="form-label">Nama Penerima Tugas</label>
+          <input type="text" class="form-control" name="nama">
         </div>
-
-        <div class="box-with-shadow">
-            <input type="submit" value="Kirim">
+        <div class="mb-3">
+          <label class="form-label">Nama Task</label>
+          <input type="text" class="form-control" name="nama_task">
         </div>
-    </form>
+        <div class="mb-3">
+          <label class="form-label">Deadline</label>
+          <input type="date" class="form-control" name="deadline">
+        </div>
+       
+       
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
 </div>
 {{ end }}
