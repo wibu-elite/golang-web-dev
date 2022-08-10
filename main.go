@@ -5,6 +5,7 @@ import (
 	"golang-web-dev/handler"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -15,7 +16,6 @@ func main() {
 	mux.HandleFunc("/", handler.Login)
 	mux.HandleFunc("/logout", handler.Logout)
 	mux.HandleFunc("/insert", handler.Insert)
-
 
 	mux.HandleFunc("/hello", handler.HelloHandler)
 	mux.HandleFunc("/auth", handler.Auth)
@@ -34,9 +34,17 @@ func main() {
 
 	// mux.Handle("/static", http.FileServer(http.Dir("./site")))
 
-	log.Println("Starting web on port 8080")
+	port := func() string {
+		p := os.Getenv("PORT")
+		if p == "" {
+			return "8080"
+		}
+		return p
+	}()
 
-	err := http.ListenAndServe(":8080", mux)
+	log.Println("Starting web on port " + port)
+
+	err := http.ListenAndServe(":"+port, mux)
 	log.Fatal(err)
 
 }

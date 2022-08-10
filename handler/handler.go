@@ -8,17 +8,13 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"path"
 	"strconv"
-
 	// "text/template"
-
-	_ "github.com/go-sql-driver/mysql"
-
-	"os"
+	// "github.com/go-sql-driver/mysql"
 	// "golang.org/x/text/message"
 )
-
 
 type Tasks struct {
 	id        int
@@ -86,6 +82,10 @@ func Task(w http.ResponseWriter, r *http.Request) {
 		for selDB.Next() {
 			err = selDB.Scan(&task.id, &task.nama, &task.nama_task, &task.deadline)
 			fmt.Println(task)
+			if err != nil {
+				log.Println(err)
+				http.Error(w, "There is Something Wrong. Keep Calm", http.StatusInternalServerError)
+			}
 		}
 
 		// tmpl.ExecuteTemplate(w, "Index", res)
@@ -355,7 +355,7 @@ func Auth(w http.ResponseWriter, r *http.Request) {
 		if username == "admin" && password == "123" {
 			CreateFile("Berhasil")
 
-			http.Redirect(w, r, "/task", http.StatusSeeOther)
+			http.Redirect(w, r, "/home", http.StatusSeeOther)
 		} else {
 
 			http.Error(w, "Wah Otaknya ini yang kena", http.StatusBadRequest)
