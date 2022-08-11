@@ -95,7 +95,10 @@ func Task(w http.ResponseWriter, r *http.Request) {
 		// }
 		// fmt.Print(selDB)
 		data := map[string]interface{}{
-			"content": task,
+			"id": task.id,
+			"nama" : task.nama,
+			"task" : task.nama_task,
+			"date" : task.deadline,
 		}
 
 		fmt.Print(data)
