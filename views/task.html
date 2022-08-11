@@ -2,6 +2,7 @@
 {{ define "main" }}
 
 <h2> Registered </h2>
+
     <table border="1" class="table table-bordered">
       <thead>
       <tr>
@@ -10,21 +11,19 @@
         <th>Nama Task</th>
         <th>Deadline</th>
       </tr>
-       </thead>
+      </thead>
        <tbody>
-
-         <tr>
-        {{ .id }}
-        {{ .nama }}
-        {{ .task }}
-        {{ .date }}
-        <!-- <td>{{ .content }}</td>
+        {{ range .Tasks}}
+       <tr>
+        <td> {{ .id }}</td>
         <td> {{ .nama }} </td>
-        <td>{{ .nama_task }} </td> 
-        <td>{{ .deadline }} </td>  -->
-      </tr> -->
+        <td> {{ .task }} </td> 
+        <td>  {{.date }} </td> 
+      </tr>
+      {{ end }}
        </tbody>
     </table>
+
 
 
 {{ end }}

@@ -11,9 +11,11 @@ import (
 	"os"
 	"path"
 	"strconv"
+
 	// "text/template"
-	// "github.com/go-sql-driver/mysql"
 	// "golang.org/x/text/message"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type Tasks struct {
@@ -94,11 +96,12 @@ func Task(w http.ResponseWriter, r *http.Request) {
 		// 	"content": res,
 		// }
 		// fmt.Print(selDB)
+		
 		data := map[string]interface{}{
-			"id": task.id,
-			"nama" : task.nama,
-			"task" : task.nama_task,
-			"date" : task.deadline,
+			"id"	: task.id,
+			"nama"	: task.nama,
+			"task"	: task.nama_task,
+			"date"	: task.deadline,
 		}
 
 		fmt.Print(data)
